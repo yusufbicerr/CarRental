@@ -6,10 +6,10 @@ using System.Text;
 
 namespace Business.Abstract
 {
-    public interface IUserService
+    public interface IBrandService
     {
-        IResult Add(User user);
-        IDataResult<List<User>> GetAll();
-        IDataResult<User> GetById(int id);
+        IResult Add(Brand brand);
+        IDataResult<List<Brand>> GetAll();
+        IDataResult<Brand> GetById(int id);
     }
 }

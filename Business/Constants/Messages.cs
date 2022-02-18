@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Business.Contains
+namespace Business.Constants
 {
     public static class Messages
     {
