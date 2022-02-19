@@ -11,18 +11,18 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class BrandsController : ControllerBase
     {
-        IUserService _userService;
-        public UsersController(IUserService userService)
+        IBrandService _brandService;
+        public BrandsController(IBrandService userService)
         {
-            _userService = userService;
+            _brandService = userService;
         }
 
-        [HttpGet("getallusers")]
-        public IActionResult GetAllUsers()
+        [HttpGet("getallbrands")]
+        public IActionResult GetAllBrands()
         {
-            var result = _userService.GetAll();
+            var result = _brandService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
@@ -30,10 +30,10 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("getuserbyid")]
-        public IActionResult GetUserById(int id)
+        [HttpGet("getbrandbyid")]
+        public IActionResult GetBrandById(int id)
         {
-            var result = _userService.GetById(id);
+            var result = _brandService.GetById(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -41,10 +41,10 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("adduser")]
-        public IActionResult AddUser(User user)
+        [HttpGet("addbrand")]
+        public IActionResult AddBrand(Brand brand)
         {
-            var result = _userService.Add(user);
+            var result = _brandService.Add(brand);
             if (result.Success)
             {
                 return Ok(result);
