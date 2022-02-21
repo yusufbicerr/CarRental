@@ -21,7 +21,7 @@ namespace Core.Utilities.Security.JWT
         {
             Configuration = configuration;
             _tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
-
+            //appsettings.json daki TokenOptions ile TokenOptions classını eşleştir
         }
         public AccessToken CreateToken(User user, List<OperationClaim> operationClaims)
         {

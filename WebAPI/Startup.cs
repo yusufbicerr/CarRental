@@ -47,6 +47,7 @@ namespace WebAPI
             //services.AddSingleton<IRentalDal, EfRentalDal>();
 
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
+            //appsettings.json daki TokenOptions ile TokenOptions classını eşleştir
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>

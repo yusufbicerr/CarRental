@@ -8,7 +8,7 @@ namespace Core.Extensions
 {
     public static class ClaimsPrincipalExtensions
     {
-        //ClaimsPrincipal kullanıcının claimlerine ulaşmanı sağlar.(.Nette var) 
+        //ClaimsPrincipal --> kullanıcının claimlerine ulaşmanı sağlar.(.Nette var) 
         public static List<string> Claims(this ClaimsPrincipal claimsPrincipal, string claimType)
         {
             var result = claimsPrincipal?.FindAll(claimType)?.Select(x => x.Value).ToList();
