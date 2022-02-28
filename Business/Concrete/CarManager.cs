@@ -2,6 +2,7 @@
 using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -24,12 +25,25 @@ namespace Business.Concrete
 
         [SecuredOperation("car.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Add(Car car)
         {
            
             _carDal.Add(car);
             return new SuccessResult(Messages.CarAdded + " " + car.Description);
 
+        }
+
+        public IResult AddCarTransactionTest(Car car)
+        {
+            Add(car);
+            if (car.DailyPrice < 10)
+            {
+                throw new Exception("Fiyat 10 dan kucuk olamaz");
+            }
+            Add(car);
+
+            return null;
         }
 
         public IDataResult<List<Car>> GetAll()
