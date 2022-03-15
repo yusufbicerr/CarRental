@@ -11,18 +11,18 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BrandsController : ControllerBase
+    public class ColorsController : ControllerBase
     {
-        IBrandService _brandService;
-        public BrandsController(IBrandService brandService)
+        IColorService _colorService;
+        public ColorsController(IColorService colorService)
         {
-            _brandService = brandService;
+            _colorService = colorService;
         }
 
-        [HttpGet("getallbrands")]
-        public IActionResult GetAllBrands()
+        [HttpGet("getallcolors")]
+        public IActionResult GetAllColors()
         {
-            var result = _brandService.GetAll();
+            var result = _colorService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
@@ -30,10 +30,10 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("getbrandbyid")]
-        public IActionResult GetBrandById(int id)
+        [HttpGet("getcolorbyid")]
+        public IActionResult GetColorById(int id)
         {
-            var result = _brandService.GetById(id);
+            var result = _colorService.GetById(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -41,10 +41,10 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("addbrand")]
-        public IActionResult AddBrand(Brand brand)
+        [HttpPost("addcolor")]
+        public IActionResult AddBrand(Color color)
         {
-            var result = _brandService.Add(brand);
+            var result = _colorService.Add(color);
             if (result.Success)
             {
                 return Ok(result);
